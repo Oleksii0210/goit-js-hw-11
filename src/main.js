@@ -16,7 +16,7 @@ searchForm.addEventListener('submit', submitHandle);
 async function submitHandle(event) {
   event.preventDefault();
   const searchTerm = inputElement.value.trim();
-
+  galleryElement.innerHTML = '';
   if (searchTerm === '') {
     iziToast.error({
       title: 'Error',
@@ -30,7 +30,7 @@ async function submitHandle(event) {
   try {
     const images = await fetchImages(searchTerm);
     if (images.length === 0) {
-      galleryElement.innerHTML = '';
+      
       iziToast.info({
         title: 'Info',
         message:
